@@ -11,12 +11,6 @@
     "words-to-numbers": "^1.5.1"
   },
   "scripts": {
-    "start": "cd website && yarn start",
-    "buildSite": "cd website && yarn && yarn build",
-    "prepush": "yarn build && yarn buildSite",
-    "cypress:open": "yarn --cwd website cypress open website",
-    "cypress:run": "yarn --cwd website cypress run --record --key <YOUR_KEY>",
-    "cypress:ci": "yarn --cwd website cypress --parallel",
     "test": "jest"
   },
   "devDependencies": {
