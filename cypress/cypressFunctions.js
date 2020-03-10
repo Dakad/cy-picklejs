@@ -1,5 +1,5 @@
 const {
-    SCREENS,
+    PAGES,
     STATE,
     setState,
 } = require('../common/variables');
@@ -47,13 +47,15 @@ const click = (el, parent, text) => (
 );
 
 const type = (text, input, parent) => {
-    const randomVariableRegex = /<rand:(\w+)>/;
-    const randomVariable = text.match(randomVariableRegex);
+   // Accept : user_<random:userId>  or  <random:9:appId>
+   const randomVariableRegex = /<random(?::(?<digits>\d))?:(?<var>\w+)>/;
+    const foundRandomVar = text.match(randomVariableRegex);
 
-    if (randomVariable) {
-        const randomNumber = Math.round(Math.random() * 10000).toString();
+    if (foundRandomVar) {
+        const digits = foundRandomVar.groups('digits') || 1;
+        const randomNumber = Math.round(Math.random() * Math.pow(10, digits)).toString();
         text = text.replace(randomVariableRegex, randomNumber);
-        setState(randomVariable[1], randomNumber);
+        setState(foundRandomVar.groups['var'] || "random",  randomNumber);
     }
 
     const stateVariableRegex = /<var:(\w+) >/;
@@ -72,48 +74,38 @@ const replace = (input, parent, contains, text) => {
         .type(text);
 }
 
-const open = screen => {
-    const url = SCREENS[screen];
-
-    if(!url) throw Error(`Screen ${screen} has no specified URL`);
-
-    cy.visit(url);
-}
-
-const wait = (secs) => {
+const wait = (secs = 1) => {
     cy.wait(secs * 1000);
 }
 
-const waitForResults = () => {
-    cy.wait(1000);
-}
+const waitForResults = _ => wait(1);
 
 // Experimental, not nailed down yet
 const dragAbove = (el1, el1Parent, el1Contains, el2, el2Parent, el2Contains) => {
     const $el1 =  getNormalized([el1Parent, el1], { text: el1Contains });
     $el1.trigger('mousedown', { which: 1, force: true });
-
+    
     let el2X = 0;
     let el2Y = 0;
-
+    
     getNormalized([el2Parent, el2], { text: el2Contains }).then($el => {
-      const { x, y } = $el[0].getBoundingClientRect();
-      el2X = x;
-      el2Y = y;
-
-      return getNormalized('Ranking Form');
+        const { x, y } = $el[0].getBoundingClientRect();
+        el2X = x;
+        el2Y = y;
+        
+        return getNormalized('Ranking Form');
     }).then($el => {
         const { x: containerX, y: containerY } = $el[0].getBoundingClientRect();
-
+        
         const newPosOpts = {
             x: 400,
             y: 100,
             force: true
         };
-
+        
         $el
-            .trigger('mousemove', newPosOpts)
-            .trigger('mouseup', newPosOpts);
+        .trigger('mousemove', newPosOpts)
+        .trigger('mouseup', newPosOpts);
     });
 }
 
@@ -123,21 +115,28 @@ const snapshotOptions = {
     failureThresholdType: 'percent',
 }
 
-const takeSnapshot = () => {
-    cy.matchImageSnapshot(null, snapshotOptions);
-
-}
 
 const takeNamedSnapshot = (name) => {
     cy.matchImageSnapshot(name, snapshotOptions);
 }
 
-const takeElSnapshot =  (el, parent) => {
+const takeSnapshot = _ =>  takeNamedSnapshot("snapshot");
+
+const takeElSnapshot = (el, parent) => {
     getNormalized([parent, el]).matchImageSnapshot(el, snapshotOptions);
 }
 
-const onPage = screen => {
-    cy.url().should('contain', SCREENS[screen]);
+
+const open = pageName => {
+    const url = PAGES[pageName];
+
+    if(!url) throw Error(`Page '${pageName}' has no specified URL`);
+
+    cy.visit(url);
+}
+
+const onPage = pageName => {
+    cy.url().should('contain', PAGES[pageName]);
 }
 
 const redirectedTo = onPage;
