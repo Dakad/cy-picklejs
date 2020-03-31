@@ -1,7 +1,23 @@
 {
-  "name": "picklejs",
+  "name": "@apptweak/cy-picklejs",
   "version": "0.101.0",
   "main": "buildLib",
+  "author": "DakaD",
+  "description": "Cucumber with Brine",
+  "keywords": [
+    "js",
+    "cypress",
+    "pickle",
+    "regex"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dakad/picklejs.git"
+  },
+  "homepage": "https://github.com/Dakad/picklejs#readme",
+  "bugs": {
+    "url": "https://github.com/Dakad/picklejs/issues"
+  },
   "dependencies": {
     "cypress-cucumber-preprocessor": "^1.2.2",
     "cypress-image-snapshot": "3.1.1",
