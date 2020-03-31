@@ -1,5 +1,5 @@
-import * as functions from '../functions';
-import { ELEMENT_SELECTORS, STATE, setScreens } from '../common/variables';
+import * as functions from '../common/functions';
+import { ELEMENT_SELECTORS, STATE, setPages } from '../common/variables';
 
 let {
     hex2rgbCSS,
@@ -54,8 +54,11 @@ describe('functions', () => {
             Button: '.modal-button',
         };
 
-        setScreens({
-            'Home': '/home'
+        setPages({
+            'Home': '/home',
+            'Login': '/login',
+            'Signup': '/sign_in',
+            'Sign up': '/sign_in'
         });
 
         last = jest.fn();
@@ -154,7 +157,7 @@ describe('functions', () => {
             expect(buildClassSelector('.test-class:contains("Good Stuff")')).toEqual('[class*="test-class"]:contains("Good Stuff")')
         });
 
-        it('Handles Wierd Combos of Classes', () => {
+        it('Handles weird Combos of Classes', () => {
             expect(buildClassSelector('.test-class.class-2:active .class3:hover > .class4'))
                 .toEqual('[class*="test-class"][class*="class-2"]:active [class*="class3"]:hover > [class*="class4"]')
         });

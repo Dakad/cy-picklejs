@@ -1,23 +1,21 @@
 import {
-    r,
+    re,
     or,
     string,
-    int,
+    number,
     elInEl,
     page,
-} from '../regexBuilder';
+} from '../common/regexBuilder';
 
 describe('RegexBuilder', () => {
-    describe('r', () => {
+    describe('re', () => {
         it('creates a regex that matches from start to finish', () => {
-            const hello = r('hello');
-
+            const hello = re('hello');
             expect('hello'.match(hello)[0]).toBe('hello');
         })
 
         it('won\'t match if there is extra characters at the start or end', () => {
-            const hello = r('hello');
-
+            const hello = re('hello');
             expect('1hello1'.match(hello)).toBeFalsy();
         })
     });
@@ -58,13 +56,21 @@ describe('RegexBuilder', () => {
         });
     });
 
-    describe('int', () => {
-        it('matches an int', () => {
-            expect('I am #1'.match(int)[1]).toBe('1');
+    describe('number', () => {
+        it('matches an number', () => {
+            expect('I am #1'.match(number)[1]).toBe('1');
+        });
+
+        it('matches a number', () => {
+            expect('I m running for 15 minutes'.match(number)[1]).toBe("15");
+        });
+
+        it('matches a string with quotes', () => {
+            expect('I have "7" books'.match(number)[1]).toBe("7")
         });
 
         it('does not match a string without quotes', () => {
-            expect('I am # one'.match(int)).toBeNull();
+            expect('I am # one'.match(number)).toBeNull();
         });
     });
 
@@ -103,16 +109,16 @@ describe('RegexBuilder', () => {
         it('should match a page', () => {
             const m = 'I should be on "Home"'.match(page);
             expect(m[1]).toBe('Home');
-        })
+        });
 
-        it('should match a page with a suffix', () => {
+        it('should match with a page suffix', () => {
             const m = 'I should be on "Home" Page'.match(page);
             expect(m[1]).toBe('Home');
-        })
+        });
 
         it('should match a page with the in front', () => {
             const m = 'I should be on the "Home" Page'.match(page);
             expect(m[1]).toBe('Home');
-        })
+        });
     });
 })
