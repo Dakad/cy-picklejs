@@ -235,23 +235,23 @@ describe('REGEX', () => {
         });
     });
 
-    describe('TAKE_SNAPSHOT', () => {
-        it('I take a snapshot named "Home Page"', () => {
-            const m = 'I take a snapshot named "Home Page"'
-                .match(REGEX.TAKE_SNAPSHOT);
+    // describe('TAKE_SNAPSHOT', () => {
+    //     it('I take a snapshot named "Home Page"', () => {
+    //         const m = 'I take a snapshot named "Home Page"'
+    //             .match(REGEX.TAKE_SNAPSHOT);
             
-            expect(m[1]).toBe('Home Page');
-        });
-    });
+    //         expect(m[1]).toBe('Home Page');
+    //     });
+    // });
 
-    describe('TAKE_EL_SNAPSHOT', () => {
-        it('I take a snapshot of the "Modal"', () => {
-            const m = 'I take a snapshot of the "Modal"'
-                .match(REGEX.TAKE_EL_SNAPSHOT);
+    // describe('TAKE_EL_SNAPSHOT', () => {
+    //     it('I take a snapshot of the "Modal"', () => {
+    //         const m = 'I take a snapshot of the "Modal"'
+    //             .match(REGEX.TAKE_EL_SNAPSHOT);
             
-            expect(m[1]).toBe('Modal');
-        });
-    });
+    //         expect(m[1]).toBe('Modal');
+    //     });
+    // });
 
     describe('ON_PAGE', () => {
         it('I should be on the "Front Page"', () => {

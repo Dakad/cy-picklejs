@@ -24,11 +24,12 @@ module.exports = () => {
     When(REGEX.REPLACE, cypressFunctions.replace);
 
 
-    // ex: I open the "Login Screen"
+    // ex: I open the "Login" Screen
     When(REGEX.OPEN, cypressFunctions.open);
 
 
     // ex: I am on "Sign up" page
+    //     I am on "Sign up" 
     When(REGEX.BE_ON, cypressFunctions.open);
 
 
@@ -44,13 +45,13 @@ module.exports = () => {
     When(REGEX.DRAG_ABOVE, cypressFunctions.dragAbove);
 
 
-    When(REGEX.TAKE_SNAPSHOT, cypressFunctions.takeSnapshot);
+    // When(REGEX.TAKE_SNAPSHOT, cypressFunctions.takeSnapshot);
 
 
-    When(REGEX.TAKE_EL_SNAPSHOT, cypressFunctions.takeElSnapshot);
+    // When(REGEX.TAKE_EL_SNAPSHOT, cypressFunctions.takeElSnapshot);
 
 
-    When(REGEX.TAKE_SNAPSHOT_NAMED, cypressFunctions.takeNamedSnapshot)
+    // When(REGEX.TAKE_SNAPSHOT_NAMED, cypressFunctions.takeNamedSnapshot)
 
     
     // ex: I should be on the "Login Screen"

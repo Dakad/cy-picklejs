@@ -25,9 +25,9 @@ module.exports = {
 
     DRAG_ABOVE: re(`I drag${elInEl} above${elInEl}`),
 
-    TAKE_SNAPSHOT:  re(`I take a snapshot`),
-    TAKE_EL_SNAPSHOT: re(`I take a snapshot of${elInEl}`),
-    TAKE_SNAPSHOT_NAMED: re(`I take a snapshot named ${string}`),
+    // TAKE_SNAPSHOT:  re(`I take a snapshot`),
+    // TAKE_EL_SNAPSHOT: re(`I take a snapshot of${elInEl}`),
+    // TAKE_SNAPSHOT_NAMED: re(`I take a snapshot named ${string}`),
     
     ON_PAGE: re(`I should be on${page}`),
     REDIRECTED_TO: re(`I should be redirected to${page}`),
