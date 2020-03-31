@@ -38,6 +38,6 @@ module.exports = {
     EL_DOES_NOT_EXIST: re(`I should not see${elInEl}`),
     EL_CONTAINS_TEXT: re(`${elInEl} should (?:be|contain) ${string}`),
     EL_VALUE: re(`${elInEl} value should be ${string}`),
-    EL_BACKBGROUND: re(`I should see a ${string} background${elInEl}`),
+    EL_BACKGROUND: re(`I should see a ${string} background${elInEl}`),
     EL_BORDER: re(`I should see a ${string} border${elInEl}`),
 };

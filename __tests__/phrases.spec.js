@@ -408,10 +408,10 @@ describe('REGEX', () => {
         });
     });
 
-    describe('EL_BACKBGROUND', () => {
+    describe('EL_BACKGROUND', () => {
         it('I should see a "#ffffff" background on the "Button"', () => {
             const m = 'I should see a "#ffffff" background on the "Button"'
-                .match(REGEX.EL_BACKBGROUND);
+                .match(REGEX.EL_BACKGROUND);
             
             expect(m[1]).toBe('#ffffff');
             expect(m[2]).toBe('Button');
@@ -419,7 +419,7 @@ describe('REGEX', () => {
 
         it('I should see a "#ffffff" background on the "Button" in the "Modal"', () => {
             const m = 'I should see a "#ffffff" background on the "Button" in the "Modal"'
-                .match(REGEX.EL_BACKBGROUND);
+                .match(REGEX.EL_BACKGROUND);
             
             expect(m[1]).toBe('#ffffff');
             expect(m[2]).toBe('Button');
