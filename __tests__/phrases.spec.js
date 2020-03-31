@@ -1,4 +1,5 @@
-import { REGEX } from '../phrases';
+import REGEX from '../common/regex';
+
 
 describe('REGEX', () => {
     describe('SCROLL', () => {
@@ -150,6 +151,23 @@ describe('REGEX', () => {
             const m = 'I open "Home" page'
                 .match(REGEX.OPEN);
             
+            expect(m[1]).toBe('Home');
+        });
+    });
+
+    describe('BE_ON', () => {
+        it('on Sign up Page', () => {
+            const m = 'I am on the "Sign up Page"'.match(REGEX.BE_ON);
+            expect(m[1]).toBe('Sign up Page');
+        });
+
+        it('on Sign up page', () => {
+            const m = 'I am on the "Signup" page'.match(REGEX.BE_ON);
+            expect(m[1]).toBe('Signup');
+        });
+
+        it('on Home', () => {
+            const m = "I am on \"Home\"" .match(REGEX.BE_ON);
             expect(m[1]).toBe('Home');
         });
     });

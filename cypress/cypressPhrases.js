@@ -28,6 +28,10 @@ module.exports = () => {
     When(REGEX.OPEN, cypressFunctions.open);
 
 
+    // ex: I am on "Sign up" page
+    When(REGEX.BE_ON, cypressFunctions.open);
+
+
     // @TODO: Figure out while default way isn't working
     When(REGEX.WAIT_FOR_RESULTS, cypressFunctions.waitForResults);
 
@@ -86,7 +90,7 @@ module.exports = () => {
 
 
     // ex: I should see a "red" background on the "Button"
-    Then(REGEX.EL_BACKBGROUND, cypressFunctions.elBackground)
+    Then(REGEX.EL_BACKGROUND, cypressFunctions.elBackground)
 
 
     // ex: I should see a "red" border on the "Button"

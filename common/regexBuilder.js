@@ -11,7 +11,7 @@ const string = '"([^"]+)"';
 const number = '(\\d+)';
 
 const elInEl = `\\s?${or(verbs)}\\s?${string}(?:\\s?${or(verbs)} ${string})?(?: containing ${string})?`;
-const page = `(?: the)? ${string}(?:\\s(?:page|screen|Page|Screen))?`
+const page = `(?: the)? ${string}(?:\\s(?:page|screen|Page|Screen))?`;
 
 module.exports = {
     re,

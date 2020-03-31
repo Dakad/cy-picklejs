@@ -1,10 +1,13 @@
+const regexBuilder = require('./regexBuilder');
+
 const {
     re,
     string,
     number,
     elInEl,
     page,
-} = require('./regexBuilder');
+} = regexBuilder;
+
 
 module.exports = {
     SCROLL: re(`I scroll to the (top|bottom) of the page`),
@@ -15,6 +18,7 @@ module.exports = {
     REPLACE: re(`I replace the contents${elInEl} with ${string}`),
 
     OPEN: re(`I open${page}`),
+    BE_ON: re(`I(?:'m| am) on${page}`),
 
     WAIT_FOR_RESULTS: re(`I wait for results to load`),
     WAIT_SECONDS: re(`I wait for ${number} seconds`),
