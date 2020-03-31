@@ -189,17 +189,13 @@ describe('REGEX', () => {
     });
 
     describe('WAIT_SECONDS', () => {
-        it('I wait 10 seconds', () => {
-            const m = 'I wait 10 seconds'
-                .match(REGEX.WAIT_SECONDS);
-            
+        it('10 seconds', () => {
+            const m = 'I wait for 10 seconds'.match(REGEX.WAIT_SECONDS);
             expect(m[1]).toBe('10');
         });
 
-        it('I wait ten seconds', () => {
-            const m = 'I wait ten seconds'
-                .match(REGEX.WAIT_SECONDS);
-            
+        it('ten seconds', () => {
+            const m = 'I wait for ten seconds'.match(REGEX.WAIT_SECONDS);
             expect(m).toBeNull();
         });
     });
