@@ -1,6 +1,6 @@
 {
   "name": "@apptweak/cy-picklejs",
-  "version": "0.101.0",
+  "version": "1.0.0",
   "main": "buildLib",
   "author": "DakaD",
   "description": "Cucumber with Brine",
@@ -12,11 +12,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Dakad/picklejs.git"
+    "url": "git+https://github.com/Dakad/cy-picklejs.git"
   },
-  "homepage": "https://github.com/Dakad/picklejs#readme",
+  "homepage": "https://github.com/Dakad/cy-picklejs#readme",
   "bugs": {
-    "url": "https://github.com/Dakad/picklejs/issues"
+    "url": "https://github.com/Dakad/cy-picklejs/issues"
   },
   "dependencies": {
     "cypress-cucumber-preprocessor": "^1.2.2",
