@@ -37,5 +37,50 @@
     "chai": "^4.2.0",
     "jest": "^23.5.0",
     "jest-cucumber": "^1.0.11"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/common/**/*.js",
+      "**/cypress/**/*.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 70,
+        "functions": 70,
+        "lines": 70,
+        "statements": 70
+      }
+    },
+    "coverageDirectory": "coverage",
+    "testMatch": [
+      "<rootDir>/**/*.spec.js"
+    ],
+    "testEnvironment": "node",
+    "transformIgnorePatterns": [
+      "node_modules/*"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/build/",
+      "/coverage/",
+      "/dist/",
+      "/bin/"
+    ]
   }
 }
