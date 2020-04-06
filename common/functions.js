@@ -82,11 +82,11 @@ const getSelector = (elements, { text, singular, showOrdinals } = {}) => {
             throw new Error(`The className was not defined for ${lastParent}${el}`);
         }
 
-        if (selector.default)
+        if (selector._default)
             lastParentSelectors = selector;
 
         // if it's a container
-        const className = selector.default ? selector.default : selector;
+        const className = selector._default ? selector._default : selector;
     
         return [...out, className];
     }, []).join(' ');

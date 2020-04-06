@@ -1,7 +1,5 @@
-import * as functions from '../common/functions';
 import { ELEMENT_SELECTORS, STATE, setPages } from '../common/variables';
-
-let {
+import {
     hex2rgbCSS,
     buildClassSelector,
     parseNumberEls,
@@ -25,7 +23,7 @@ let {
     elDoesNotExist,
     elBackground,
     elBorder,
-} = functions;
+} from '../common/functions';
 
 jest.mock('../common/variables');
 
@@ -50,8 +48,8 @@ describe('functions', () => {
         ELEMENT_SELECTORS['Button'] = '.button';
         ELEMENT_SELECTORS['Input'] = '.input';
         ELEMENT_SELECTORS['Modal'] = {
-            default: '.modal',
-            Button: '.modal-button',
+            "_default": '.modal',
+            "Button": '.modal-button',
         };
 
         setPages({
