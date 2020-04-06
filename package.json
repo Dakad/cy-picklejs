@@ -27,7 +27,9 @@
     "words-to-numbers": "^1.5.1"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:debug": "node --inspect node_modules/.bin/jest --runInBand"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
