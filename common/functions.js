@@ -82,11 +82,11 @@ const getSelector = (elements, { text, singular, showOrdinals } = {}) => {
             throw new Error(`The className was not defined for ${lastParent}${el}`);
         }
 
-        if (selector.default)
+        if (selector._default)
             lastParentSelectors = selector;
 
         // if it's a container
-        const className = selector.default ? selector.default : selector;
+        const className = selector._default ? selector._default : selector;
     
         return [...out, className];
     }, []).join(' ');
@@ -97,11 +97,26 @@ const getSelector = (elements, { text, singular, showOrdinals } = {}) => {
     className = buildClassSelector(className);
 
     return showOrdinals ? { className, firstOrdinal } : className;
-}
+};
 
+const getNormalized = (elements, { text, singular } = {}) => {
+    const { className, firstOrdinal } = getSelector(elements, { text, singular, showOrdinals: true })
+    const el = cy.get(className);
+
+    if(firstOrdinal) {
+        if (firstOrdinal === 'last') {
+            return el.last();
+        } else {
+            return el.eq(firstOrdinal - 1);
+        }
+    }
+
+    return el;
+}
 module.exports = {
     hex2rgbCSS,
     buildClassSelector,
     parseNumberEls,
     getSelector,
+    getNormalized
 };

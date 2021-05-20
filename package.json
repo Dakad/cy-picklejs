@@ -1,6 +1,6 @@
 {
   "name": "@apptweak/cy-picklejs",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "buildLib",
   "author": "DakaD",
   "description": "Cucumber with Brine",
@@ -19,23 +19,69 @@
     "url": "https://github.com/Dakad/cy-picklejs/issues"
   },
   "dependencies": {
-    "cypress-cucumber-preprocessor": "^1.2.2",
-    "cypress-image-snapshot": "3.1.1",
     "hex-rgb": "^3.0.0",
     "pluralize": "^7.0.0",
-    "wdio-visual-regression-service": "^0.9.0",
     "words-to-numbers": "^1.5.1"
   },
-  "scripts": {
-    "test": "jest"
+  "peerDependencies": {
+    "cypress": "^7.3.0",
+    "cypress-cucumber-preprocessor": "^4.0.3"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "babel-watch": "^2.0.7",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "babel-jest": "^25.2.6",
     "chai": "^4.2.0",
-    "jest": "^23.5.0",
-    "jest-cucumber": "^1.0.11"
+    "jest": "^25.2.7"
+  },
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:debug": "node --inspect node_modules/.bin/jest --runInBand"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/common/**/*.js",
+      "**/cypress/**/*.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 70,
+        "functions": 70,
+        "lines": 70,
+        "statements": 70
+      }
+    },
+    "coverageDirectory": "coverage",
+    "testMatch": [
+      "<rootDir>/**/*.spec.js"
+    ],
+    "testEnvironment": "node",
+    "transformIgnorePatterns": [
+      "node_modules/*"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/build/",
+      "/coverage/",
+      "/dist/",
+      "/bin/"
+    ]
   }
 }
