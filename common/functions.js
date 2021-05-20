@@ -97,11 +97,26 @@ const getSelector = (elements, { text, singular, showOrdinals } = {}) => {
     className = buildClassSelector(className);
 
     return showOrdinals ? { className, firstOrdinal } : className;
-}
+};
 
+const getNormalized = (elements, { text, singular } = {}) => {
+    const { className, firstOrdinal } = getSelector(elements, { text, singular, showOrdinals: true })
+    const el = cy.get(className);
+
+    if(firstOrdinal) {
+        if (firstOrdinal === 'last') {
+            return el.last();
+        } else {
+            return el.eq(firstOrdinal - 1);
+        }
+    }
+
+    return el;
+}
 module.exports = {
     hex2rgbCSS,
     buildClassSelector,
     parseNumberEls,
     getSelector,
+    getNormalized
 };

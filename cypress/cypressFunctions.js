@@ -4,22 +4,7 @@ const {
     setState,
 } = require('../common/variables');
 
-const { getSelector, hex2rgbCSS } = require('../common/functions');
-
-const getNormalized = (elements, { text, singular } = {}) => {
-    const { className, firstOrdinal } = getSelector(elements, { text, singular, showOrdinals: true })
-    const el = cy.get(className);
-
-    if(firstOrdinal) {
-        if (firstOrdinal === 'last') {
-            return el.last();
-        } else {
-            return el.eq(firstOrdinal - 1);
-        }
-    }
-
-    return el;
-}
+const { getSelector, hex2rgbCSS, getNormalized } = require('../common/functions');
 
 // MORE SPECIALIZED FUNCTIONs (catching Regex)
 
@@ -116,16 +101,6 @@ const snapshotOptions = {
 }
 
 
-const takeNamedSnapshot = (name) => {
-    cy.matchImageSnapshot(name, snapshotOptions);
-}
-
-const takeSnapshot = _ =>  takeNamedSnapshot("snapshot");
-
-const takeElSnapshot = (el, parent) => {
-    getNormalized([parent, el]).matchImageSnapshot(el, snapshotOptions);
-}
-
 
 const open = pageName => {
     const url = PAGES[pageName];
@@ -179,8 +154,6 @@ module.exports = {
     wait,
     waitForResults,
     dragAbove,
-    takeSnapshot,
-    takeElSnapshot,
     onPage,
     redirectedTo,
     nElements,
