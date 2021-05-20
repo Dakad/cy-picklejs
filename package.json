@@ -1,6 +1,6 @@
 {
   "name": "@apptweak/cy-picklejs",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "main": "buildLib",
   "author": "DakaD",
   "description": "Cucumber with Brine",
